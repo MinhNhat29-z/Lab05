@@ -1,0 +1,63 @@
+{
+  "info": {
+    "_postman_id": "c9aea4b3-a050-485b-822e-c2950a6c0c30",
+    "name": "2474802010483_TruongMinhNhat_Monitor",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60137029",
+    "_collection_link": "https://go.postman.co/collection/60137029-c9aea4b3-a050-485b-822e-c2950a6c0c30?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET /users - Status and Response Time",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test('Response time is measured', function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.a('number');\r",
+              "    if (pm.response.responseTime >= 800) {\r",
+              "        console.warn('WARNING: Response time is ' + pm.response.responseTime + 'ms (threshold: 800ms)');\r",
+              "    }\r",
+              "});\r",
+              "pm.test('Response is valid JSON', function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
